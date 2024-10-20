@@ -8,14 +8,42 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var start = false
+    
     var body: some View {
+        Button("Click me", action: buttonAction)
+        Spacer()
+        
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            if start {
+                Text("SONY")
+                    .bold()
+                    .font(.largeTitle)
+                    .foregroundStyle(.blue)
+            }
+            
+            
+            IconView(isAnimating: start)
+                .frame(width: 250, height: 250)
+            if start {
+                Text("""
+                             COMPUTER
+                        ENTERTEINMENT
+                        """)
+                    .bold()
+                    .font(.largeTitle)
+                    .foregroundStyle(.blue)
+                }
+            }
+            
+        
+        Spacer()
+    }
+    private func buttonAction() {
+        withAnimation {
+            start.toggle()
         }
-        .padding()
     }
 }
 
